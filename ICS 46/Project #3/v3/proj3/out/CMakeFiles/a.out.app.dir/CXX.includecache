@@ -1,0 +1,40 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/ics46/projects/proj3/app/Wordset.hpp
+string
+-
+
+/home/ics46/projects/proj3/app/convert.cpp
+convert.hpp
+/home/ics46/projects/proj3/app/convert.hpp
+Wordset.hpp
+/home/ics46/projects/proj3/app/Wordset.hpp
+iostream
+-
+set
+-
+sstream
+-
+map
+-
+stack
+-
+queue
+-
+vector
+-
+
+/home/ics46/projects/proj3/app/convert.hpp
+string
+-
+vector
+-
+Wordset.hpp
+/home/ics46/projects/proj3/app/Wordset.hpp
+

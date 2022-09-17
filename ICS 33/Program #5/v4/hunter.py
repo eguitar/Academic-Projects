@@ -1,0 +1,31 @@
+# The Hunter class is derived from Pulsator and Mobile_Simulton (in that order).
+#   It updates/displays like its Pulsator base, but also is mobile (moving in
+#   a straight line or in pursuit of Prey), like its Mobile_Simultion base.
+
+
+from prey  import Prey
+from pulsator import Pulsator
+from mobilesimulton import Mobile_Simulton
+from math import atan2
+
+
+class Hunter(Pulsator, Mobile_Simulton):  
+    distance = 200
+    
+    def __init__(self,x,y):
+        Pulsator.__init__(self,x,y)
+        Mobile_Simulton.randomize_angle(self)
+        Mobile_Simulton.set_speed(self,5)
+    
+    def update(self,model):
+        self.move()
+        return Pulsator.update(self,model)
+    
+#         
+#     def update(self,model):
+#         preys = model.find(lambda x:isinstance(x,Prey))
+#         
+#         self.move()
+#         self.wall_bounce()
+# #         for p in preys if self.distance(p.get_location)
+        

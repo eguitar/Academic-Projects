@@ -1,0 +1,44 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../app/proj0.hpp
+unordered_map
+-
+string
+-
+
+/home/ics46/projects/proj0/app/proj0.cpp
+unordered_map
+-
+string
+-
+iostream
+-
+proj0.hpp
+/home/ics46/projects/proj0/app/proj0.hpp
+
+/home/ics46/projects/proj0/app/proj0.hpp
+unordered_map
+-
+string
+-
+
+/home/ics46/projects/proj0/gtest/gtestmain.cpp
+gtest/gtest.h
+-
+
+/home/ics46/projects/proj0/gtest/test1.cpp
+gtest/gtest.h
+/home/ics46/projects/proj0/gtest/gtest/gtest.h
+proj0.hpp
+/home/ics46/projects/proj0/gtest/proj0.hpp
+unordered_map
+-
+string
+-
+

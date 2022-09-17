@@ -1,0 +1,3 @@
+delete hello.txt
+upload hello.txt
+quit

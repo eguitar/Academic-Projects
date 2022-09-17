@@ -1,0 +1,159 @@
+        -:    0:Source:p4.c
+        -:    0:Graph:p4.gcno
+        -:    0:Data:p4.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:#include <stdio.h>
+        -:    2:#include <stdlib.h>
+        -:    3:#include <string.h>
+        -:    4:
+        -:    5:
+        -:    6:struct Car
+        -:    7:{
+        -:    8:    unsigned id;
+        -:    9:    double miles;
+        -:   10:};
+        -:   11:
+        -:   12:
+        1:   13:int contains_car(unsigned i, struct Car *c, unsigned n)
+        -:   14:{
+        1:   15:    for (unsigned k = 0; k < n; ++k)
+        -:   16:    {
+    #####:   17:        if ((*c).id == i)
+    #####:   18:            return 1;
+    #####:   19:        c++;
+        -:   20:    }
+        1:   21:    return 0;
+        -:   22:}
+        -:   23:
+        -:   24:
+        1:   25:void add_car(unsigned i, struct Car *c, unsigned *n)
+        -:   26:{
+        -:   27:    
+        1:   28:    if (contains_car(i,c,*n))
+        -:   29:    {
+    #####:   30:        printf("Error! Car with ID %u already exists in the database.\n", i);
+    #####:   31:        return;
+        -:   32:    }
+        1:   33:    if (*n == 10)
+        -:   34:    {
+    #####:   35:        printf("Error! Max number of cars stored in the database.\n");
+    #####:   36:        return;
+        -:   37:    }
+        1:   38:    for (unsigned k = 0; k < *n; ++k)
+        -:   39:    {
+    #####:   40:        c++;
+        -:   41:    }
+        -:   42:    
+        1:   43:    c->id = i;
+        1:   44:    c->miles = 0;
+        -:   45:
+        1:   46:    (*n)++;
+        1:   47:    return;
+        -:   48:}
+        -:   49:
+        -:   50:
+    #####:   51:void add_trip(unsigned i, double mi, struct Car *c, unsigned n)
+        -:   52:{
+    #####:   53:    if (!(contains_car(i,c,n)))
+        -:   54:    {
+    #####:   55:        printf("Error! Car with ID %u does not exist in the database.\n", i);
+    #####:   56:        return;
+        -:   57:    }
+    #####:   58:    for (unsigned k = 0; k < n; ++k)
+        -:   59:    {
+    #####:   60:        if ((*c).id == i)
+        -:   61:        {
+    #####:   62:            (*c).miles += mi;
+    #####:   63:            return;
+        -:   64:        }
+    #####:   65:        c++;
+        -:   66:    }
+        -:   67:}
+        -:   68:
+        -:   69:
+    #####:   70:void reset_car(unsigned i, struct Car *c, unsigned n)
+        -:   71:{
+    #####:   72:    for (unsigned k = 0; k < n; ++k)
+        -:   73:    {
+    #####:   74:        if ((*c).id == i)
+        -:   75:        {
+    #####:   76:            (*c).miles = 0.0;
+    #####:   77:            return;
+        -:   78:        }
+    #####:   79:        c++;
+        -:   80:    }
+    #####:   81:    printf("Error! Car with ID %u does not exist in the database.\n", i);
+        -:   82:}
+        -:   83:
+        -:   84:
+    #####:   85:void print_cars(struct Car *c, unsigned n)
+        -:   86:{
+    #####:   87:    for (unsigned i = 0; i < n; ++i)
+        -:   88:    {
+    #####:   89:        printf("%u",(*c).id);
+    #####:   90:        printf("\t");
+    #####:   91:        printf("%f",(*c).miles);
+    #####:   92:        printf("\n");
+    #####:   93:        c++;
+        -:   94:    }
+    #####:   95:    return;
+        -:   96:}
+        -:   97:
+        -:   98:
+        1:   99:int main()
+        -:  100:{
+        -:  101:    struct Car data[10];     // array of struct car
+        1:  102:    unsigned size = 0;       // number of cars
+        -:  103:    char input[256];         // repeating input
+        -:  104:
+        -:  105:    char *command;           // parsed command
+        -:  106:    char *val1;              // variable 1
+        -:  107:    char *val2;              // variable 2
+        -:  108:
+        -:  109:    unsigned num1;           // variable 1
+        -:  110:    double num2;              // variable 2
+        -:  111:    
+        -:  112:    while (1)
+        -:  113:    {
+        2:  114:        printf("> ");
+        2:  115:        fgets(input,256,stdin);
+        2:  116:        command = strtok(input," ");
+        -:  117:
+        2:  118:        if (!(strcmp(input,"quit\n")))           // quit
+        1:  119:            break;
+        1:  120:        else if (!strcmp(command, "AddCar"))                               // add car
+        -:  121:        {
+        1:  122:            val1 = strtok(NULL," ");
+        1:  123:            num1 = atoi(val1);
+        -:  124:
+        1:  125:            add_car(num1,data,&size);
+        -:  126:        }
+    #####:  127:        else if (!strcmp(command, "AddTrip"))                               // add trip
+        -:  128:        {
+    #####:  129:            val1 = strtok(NULL," ");
+    #####:  130:            num1 = atoi(val1);
+        -:  131:            
+    #####:  132:            val2 = strtok(NULL," ");
+    #####:  133:            num2 = atof(val2);
+        -:  134:
+    #####:  135:            add_trip(num1,num2,data,size);
+        -:  136:        }
+    #####:  137:        else if (!strcmp(command, "Reset"))                               // reset car
+        -:  138:        {
+    #####:  139:            val1 = strtok(NULL," ");
+    #####:  140:            num1 = atoi(val1);
+        -:  141:            
+    #####:  142:            reset_car(num1,data,size);
+        -:  143:        }
+    #####:  144:        else if (!strcmp(input, "Display\n"))                               // display cars
+        -:  145:        {
+    #####:  146:            print_cars(data, size);
+        -:  147:        }
+        -:  148:        // else
+        -:  149:        // {
+        -:  150:        //     printf("HELP! USER INPUT ERROR\n");
+        -:  151:        // }
+        1:  152:    }
+        1:  153:    return 0;
+        -:  154:}

@@ -1,0 +1,30 @@
+malloc 62
+free 1
+malloc 5
+writemem 1 hello
+printmem 1 5
+malloc 10
+free 1
+malloc 4
+free 8
+free 1
+blocklist
+malloc 30
+malloc 30
+blocklist
+free 33
+malloc 30
+free 1
+free 33
+malloc 1
+malloc 1
+malloc 1
+free 1
+free 7
+free 4
+malloc 1
+malloc 1
+malloc 1
+free 1
+free 4
+quit
