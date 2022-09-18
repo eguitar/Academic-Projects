@@ -1,0 +1,134 @@
+.globl main
+
+.data
+name: .asciiz "qwerty"
+char: .asciiz "C"
+endl: .asciiz "\n"
+
+
+.text
+main:
+
+
+	#li $v0,8
+	#li $a0,0x100101e0
+	#li $a1,100
+	#syscall
+	#lw $t0,0($a0)
+
+	la $s0, name
+	
+	# printing string
+	li $v0,4
+	move $a0,$s0
+	syscall
+	li $v0,4
+	la $a0,endl
+	syscall
+	
+	li $t0,0    #counter (or shifting amount)
+	
+	add $s1,$s0,$t0
+	#loading char
+	lb $s2,0($s1)
+	#printing char
+	li $v0,35
+	move $a0,$s2
+	syscall
+	#shifting counter
+	addi $t0,$t0,1
+	li $v0,4
+	la $a0,endl
+	syscall
+	
+	add $s1,$s0,$t0
+	#loading char
+	lb $s2,0($s1)
+	#printing char
+	li $v0,35
+	move $a0,$s2
+	syscall
+	#shifting counter
+	addi $t0,$t0,1
+	li $v0,4
+	la $a0,endl
+	syscall
+	
+	add $s1,$s0,$t0
+	#loading char
+	lb $s2,0($s1)
+	#printing char
+	li $v0,35
+	move $a0,$s2
+	syscall
+	#shifting counter
+	addi $t0,$t0,1
+	li $v0,4
+	la $a0,endl
+	syscall
+	
+	add $s1,$s0,$t0
+	#loading char
+	lb $s2,0($s1)
+	#printing char
+	li $v0,35
+	move $a0,$s2
+	syscall
+	#shifting counter
+	addi $t0,$t0,1
+	li $v0,4
+	la $a0,endl
+	syscall
+	
+	add $s1,$s0,$t0
+	#loading char
+	lb $s2,0($s1)
+	#printing char
+	li $v0,35
+	move $a0,$s2
+	syscall
+	#shifting counter
+	addi $t0,$t0,1
+	li $v0,4
+	la $a0,endl
+	syscall
+
+	add $s1,$s0,$t0
+	#loading char
+	lb $s2,0($s1)
+	#printing char
+	li $v0,35
+	move $a0,$s2
+	syscall
+	#shifting counter
+	addi $t0,$t0,1
+	li $v0,4
+	la $a0,endl
+	syscall
+	
+	
+	
+	
+	add $s1,$s0,$t0
+	#loading char
+	lb $s2,0($s1)
+	
+	
+	beq $s2,$0,END
+	
+	
+	
+END:	li $v0,10
+	syscall
+	
+	
+#printing char
+	li $v0,35
+	move $a0,$s2
+	syscall
+	#shifting counter
+	addi $t0,$t0,1
+	li $v0,4
+	la $a0,endl
+	syscall
+
